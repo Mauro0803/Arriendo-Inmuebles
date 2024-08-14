@@ -1,38 +1,74 @@
 from django.db import models
 
-class TipoUsuario(models.Model):
-    tipo_usuario_id = models.AutoField(primary_key=True)
-    tipo = models.CharField(unique=True, max_length=20)
+
+class Comuna(models.Model):
+    com_id = models.AutoField(primary_key=True)
+    com_comuna = models.CharField(unique=True, max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'comuna'
+
+
+class Tipo_Inmueble(models.Model):
+    ti_id = models.AutoField(primary_key=True)
+    ti_tipo = models.CharField(unique=True, max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'tipo_inmueble'
+
+
+class Region(models.Model):
+    reg_id = models.AutoField(primary_key=True)
+    reg_region = models.CharField(unique=True, max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'region'
+
+
+class Inmueble(models.Model):
+    inm_id = models.AutoField(primary_key=True)
+    inm_nombre = models.CharField(max_length=50)
+    inm_descripcion = models.TextField(blank=True, null=True)
+    inm_m2_construidos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    inm_m2_totales = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    inm_estacionamientos = models.IntegerField(blank=True, null=True)
+    inm_habitaciones = models.IntegerField(blank=True, null=True)
+    inm_banos = models.IntegerField(blank=True, null=True)
+    inm_direccion = models.CharField(max_length=30, blank=True, null=True)
+    inm_precio = models.IntegerField(blank=True, null=True)
+    fk_com = models.ForeignKey(Comuna, on_delete=models.DO_NOTHING, blank=True, null=True)
+    fk_reg = models.ForeignKey(Region, on_delete=models.DO_NOTHING, blank=True, null=True)
+    fk_ti = models.ForeignKey(Tipo_Inmueble, on_delete=models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'inmueble'
+
+
+class Tipo_Usuario(models.Model):
+    tu_id = models.AutoField(primary_key=True)
+    tu_tipo = models.CharField(unique=True, max_length=20)
 
     class Meta:
         managed = False
         db_table = 'tipo_usuario'
 
+
 class Usuario(models.Model):
-    rut = models.CharField(primary_key=True, max_length=9)
-    nombre1 = models.CharField(max_length=20)
-    nombre2 = models.CharField(max_length=20, blank=True, null=True)
-    apellido1 = models.CharField(max_length=20)
-    apellido2 = models.CharField(max_length=20, blank=True, null=True)
-    direccion = models.CharField(max_length=30)
-    telefono = models.CharField(max_length=15)
-    correo = models.CharField(max_length=50)
-    tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.DO_NOTHING, null=True, blank=True)
-    # 1. ForeignKey (Relación Uno a Muchos):
-    # Uso: Cuando un usuario pertenece a un solo tipo de usuario, pero un tipo de usuario puede estar asociado con muchos usuarios.
-    # Ejemplo: Muchos usuarios pueden ser "Arrendador", pero el usuario SOLO puede ser "Arrendador"
+    usu_rut = models.CharField(primary_key=True, max_length=9)
+    usu_nombre1 = models.CharField(max_length=20)
+    usu_nombre2 = models.CharField(max_length=20, blank=True, null=True)
+    usu_apellido1 = models.CharField(max_length=20)
+    usu_apellido2 = models.CharField(max_length=20, blank=True, null=True)
+    usu_direccion = models.CharField(max_length=30)
+    usu_telefono = models.CharField(max_length=15)
+    usu_correo = models.CharField(max_length=50)
+    fk_tu = models.ForeignKey(Tipo_Usuario, on_delete=models.DO_NOTHING, blank=True, null=True)
+    fk_inm = models.ForeignKey(Inmueble, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'usuario'
-
-
-
-# El uso de ManyToManyField o OneToOneField depende de la relación entre las tablas Usuario y TipoUsuario. Vamos a analizar cuándo es más adecuado utilizar cada uno:
-
-
-# Implementación Actual: Esto es lo que estás utilizando actualmente en tu modelo, y es apropiado si esta es la relación que deseas modelar.
-# 2. OneToOneField (Relación Uno a Uno):
-# Uso: Cuando cada usuario debe estar asociado exactamente con un solo tipo de usuario, y viceversa.
-# Ejemplo: Si cada usuario tiene un tipo de usuario único, que no se comparte con ningún otro usuario.
-# Implementación: Cambiarías el ForeignKey a OneToOneField en tu modelo de Usuario.
