@@ -1,23 +1,25 @@
-"""
-URL configuration for arriendo_inmuebles project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from web.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path("", index),
+    path('crear_comuna/', crear_comuna_view, name='crear_comuna'),
+    path('crear_usuario/', crear_usuario_view, name='crear_usuario'),
+    path('crear_tipo_usuario/', crear_tipo_usuario_view, name='crear_tipo_usuario'),
+    path('crear_region/', crear_region_view, name='crear_region'),
+    path('crear_tipo_inmueble/', crear_tipo_inmueble_view, name='crear_tipo_inmueble'),
+    path('crear_inmueble/', crear_inmueble_view, name='crear_inmueble'),
+    path('modificar_usuario/', modificar_usuario_view, name='modificar_usuario'),
+    path('modificar_inmueble/', modificar_inmueble_view, name='modificar_inmueble'),
+    path('borrar_usuario/', borrar_usuario_view, name='borrar_usuario'),
+    path('borrar_inmueble/', borrar_inmueble_view, name='borrar_inmueble'),
+    path('asignar_comuna_a_inmueble/', asignar_comuna_a_inmueble_view, name='asignar_comuna_a_inmueble'),
+    path('asignar_region_a_inmueble/', asignar_region_a_inmueble_view, name='asignar_region_a_inmueble'),
+    path('asignar_tipo_a_usuario/', asignar_tipo_a_usuario_view, name='asignar_tipo_a_usuario'),
+    path('asignar_inmueble_a_usuario/', asignar_inmueble_a_usuario_view, name='asignar_inmueble_a_usuario'),
+    path('listado_usuario/', listado_usuario_view, name='listado_usuario'),
+
 ]

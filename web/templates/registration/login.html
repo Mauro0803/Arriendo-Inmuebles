@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% include 'head.html'%}
+</head>
+
+<body>
+    {% include 'navbar.html'%}
+    <div class="text-center">
+        {% block content %}
+       
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table class="w-100" style="text-align: center;">
+                <tr class="d-flex flex-column py-2 campo">
+                    <td class="fs-5">{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr class="d-flex flex-column py-2 campo">
+                    <td class="fs-5">{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Ingresar</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+        {# Asume que configura la vista de restablecimiento de contraseña en su URLconf #}
+        <p><a href="{% url 'password_reset' %}">¿Olvidó su contraseña?</a></p>
+
+        {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <p>Su nombre de usuario y/o contraseña son incorrectos. Inténtelo nuevamente.</p>
+        </div>
+        {% endif %}
+
+        {% if next and not user.is_authenticated %}
+        <div class="alert alert-dark mt-2">
+            <p>Por favor inicie sesión para ver esta página.</p>
+        </div>
+        {% endif %}
+        {% endblock %}
+    </div>
+    {% include 'footer.html'%}
+</body>
+
+</html>

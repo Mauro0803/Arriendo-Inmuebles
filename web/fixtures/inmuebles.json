@@ -1,0 +1,182 @@
+[
+    {
+        "model": "web.inmueble",
+        "pk": 1,
+        "fields": {
+            "inm_nombre": "Casa en Santiago",
+            "inm_descripcion": "Amplia casa en el centro de Santiago",
+            "inm_m2_construidos": 120.50,
+            "inm_m2_totales": 200.00,
+            "inm_estacionamientos": 2,
+            "inm_habitaciones": 4,
+            "inm_banos": 3,
+            "inm_direccion": "Av. Libertador Bernardo O'Higgins 123",
+            "inm_precio": 350000000,
+            "fk_com_id": 1,
+            "fk_reg_id": 7,
+            "fk_ti_id": 1
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 2,
+        "fields": {
+            "inm_nombre": "Parcela en Valparaíso",
+            "inm_descripcion": "Hermosa parcela con vista al mar",
+            "inm_m2_construidos": 250.00,
+            "inm_m2_totales": 5000.00,
+            "inm_estacionamientos": 4,
+            "inm_habitaciones": 5,
+            "inm_banos": 4,
+            "inm_direccion": "Camino a Viña del Mar s/n",
+            "inm_precio": 1500000000,
+            "fk_com_id": 2,
+            "fk_reg_id": 6,
+            "fk_ti_id": 2
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 3,
+        "fields": {
+            "inm_nombre": "Departamento en Concepción",
+            "inm_descripcion": "Moderno departamento en el centro",
+            "inm_m2_construidos": 75.00,
+            "inm_m2_totales": 75.00,
+            "inm_estacionamientos": 1,
+            "inm_habitaciones": 2,
+            "inm_banos": 1,
+            "inm_direccion": "Calle Aníbal Pinto 789",
+            "inm_precio": 90000000,
+            "fk_com_id": 3,
+            "fk_reg_id": 11,
+            "fk_ti_id": 3
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 4,
+        "fields": {
+            "inm_nombre": "Casa en La Serena",
+            "inm_descripcion": "Casa con amplio patio y piscina",
+            "inm_m2_construidos": 150.00,
+            "inm_m2_totales": 300.00,
+            "inm_estacionamientos": 2,
+            "inm_habitaciones": 4,
+            "inm_banos": 3,
+            "inm_direccion": "Calle El Faro 456",
+            "inm_precio": 280000000,
+            "fk_com_id": 4,
+            "fk_reg_id": 5,
+            "fk_ti_id": 1
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 5,
+        "fields": {
+            "inm_nombre": "Parcela en Antofagasta",
+            "inm_descripcion": "Parcela en las afueras de la ciudad",
+            "inm_m2_construidos": 200.00,
+            "inm_m2_totales": 10000.00,
+            "inm_estacionamientos": 3,
+            "inm_habitaciones": 3,
+            "inm_banos": 2,
+            "inm_direccion": "Ruta 1 km 20",
+            "inm_precio": 1200000000,
+            "fk_com_id": 5,
+            "fk_reg_id": 3,
+            "fk_ti_id": 2
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 6,
+        "fields": {
+            "inm_nombre": "Departamento en Temuco",
+            "inm_descripcion": "Departamento céntrico y bien conectado",
+            "inm_m2_construidos": 80.00,
+            "inm_m2_totales": 80.00,
+            "inm_estacionamientos": 1,
+            "inm_habitaciones": 3,
+            "inm_banos": 2,
+            "inm_direccion": "Avenida Alemania 101",
+            "inm_precio": 85000000,
+            "fk_com_id": 6,
+            "fk_reg_id": 12,
+            "fk_ti_id": 3
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 7,
+        "fields": {
+            "inm_nombre": "Casa en Rancagua",
+            "inm_descripcion": "Casa familiar en barrio tranquilo",
+            "inm_m2_construidos": 100.00,
+            "inm_m2_totales": 250.00,
+            "inm_estacionamientos": 2,
+            "inm_habitaciones": 3,
+            "inm_banos": 2,
+            "inm_direccion": "Calle República 112",
+            "inm_precio": 220000000,
+            "fk_com_id": 7,
+            "fk_reg_id": 8,
+            "fk_ti_id": 1
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 8,
+        "fields": {
+            "inm_nombre": "Parcela en Iquique",
+            "inm_descripcion": "Parcela con vista al océano",
+            "inm_m2_construidos": 180.00,
+            "inm_m2_totales": 8000.00,
+            "inm_estacionamientos": 3,
+            "inm_habitaciones": 4,
+            "inm_banos": 3,
+            "inm_direccion": "Ruta 16 km 10",
+            "inm_precio": 1350000000,
+            "fk_com_id": 8,
+            "fk_reg_id": 2,
+            "fk_ti_id": 2
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 9,
+        "fields": {
+            "inm_nombre": "Departamento en Puerto Montt",
+            "inm_descripcion": "Departamento en pleno centro de la ciudad",
+            "inm_m2_construidos": 70.00,
+            "inm_m2_totales": 70.00,
+            "inm_estacionamientos": 1,
+            "inm_habitaciones": 2,
+            "inm_banos": 1,
+            "inm_direccion": "Calle Costanera 303",
+            "inm_precio": 70000000,
+            "fk_com_id": 9,
+            "fk_reg_id": 14,
+            "fk_ti_id": 3
+        }
+    },
+    {
+        "model": "web.inmueble",
+        "pk": 10,
+        "fields": {
+            "inm_nombre": "Casa en Punta Arenas",
+            "inm_descripcion": "Casa en barrio residencial",
+            "inm_m2_construidos": 110.00,
+            "inm_m2_totales": 220.00,
+            "inm_estacionamientos": 2,
+            "inm_habitaciones": 4,
+            "inm_banos": 2,
+            "inm_direccion": "Calle Magallanes 202",
+            "inm_precio": 300000000,
+            "fk_com_id": 10,
+            "fk_reg_id": 16,
+            "fk_ti_id": 1
+        }
+    }
+]

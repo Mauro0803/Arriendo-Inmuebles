@@ -1,0 +1,132 @@
+[
+    {
+        "model": "web.usuario",
+        "pk": "123456789",
+        "fields": {
+            "usu_nombre1": "Juan",
+            "usu_nombre2": "Carlos",
+            "usu_apellido1": "Pérez",
+            "usu_apellido2": "Gómez",
+            "usu_direccion": "Av. Siempre Viva 742",
+            "usu_telefono": "987654321",
+            "usu_correo": "juan.perez@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "987654321",
+        "fields": {
+            "usu_nombre1": "María",
+            "usu_nombre2": "Fernanda",
+            "usu_apellido1": "López",
+            "usu_apellido2": "Martínez",
+            "usu_direccion": "Calle Falsa 123",
+            "usu_telefono": "123456789",
+            "usu_correo": "maria.lopez@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "456789123",
+        "fields": {
+            "usu_nombre1": "Pedro",
+            "usu_nombre2": "Antonio",
+            "usu_apellido1": "García",
+            "usu_apellido2": "Rodríguez",
+            "usu_direccion": "Avenida Principal 456",
+            "usu_telefono": "987123456",
+            "usu_correo": "pedro.garcia@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "321654987",
+        "fields": {
+            "usu_nombre1": "Ana",
+            "usu_nombre2": "Sofía",
+            "usu_apellido1": "Ramírez",
+            "usu_apellido2": "Díaz",
+            "usu_direccion": "Calle Secundaria 789",
+            "usu_telefono": "654987321",
+            "usu_correo": "ana.ramirez@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "741852963",
+        "fields": {
+            "usu_nombre1": "Luis",
+            "usu_nombre2": "Enrique",
+            "usu_apellido1": "Hernández",
+            "usu_apellido2": "Sánchez",
+            "usu_direccion": "Calle Tercera 101",
+            "usu_telefono": "852963741",
+            "usu_correo": "luis.hernandez@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "963852741",
+        "fields": {
+            "usu_nombre1": "Carmen",
+            "usu_nombre2": "Teresa",
+            "usu_apellido1": "Castro",
+            "usu_apellido2": "Romero",
+            "usu_direccion": "Calle Cuarta 202",
+            "usu_telefono": "369852147",
+            "usu_correo": "carmen.castro@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "852741963",
+        "fields": {
+            "usu_nombre1": "Ricardo",
+            "usu_nombre2": "Alberto",
+            "usu_apellido1": "Mendoza",
+            "usu_apellido2": "Morales",
+            "usu_direccion": "Calle Quinta 303",
+            "usu_telefono": "741963852",
+            "usu_correo": "ricardo.mendoza@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "741963852",
+        "fields": {
+            "usu_nombre1": "Gloria",
+            "usu_nombre2": "Patricia",
+            "usu_apellido1": "Vega",
+            "usu_apellido2": "Lara",
+            "usu_direccion": "Calle Sexta 404",
+            "usu_telefono": "852147963",
+            "usu_correo": "gloria.vega@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "963741852",
+        "fields": {
+            "usu_nombre1": "Miguel",
+            "usu_nombre2": "Ángel",
+            "usu_apellido1": "Ortiz",
+            "usu_apellido2": "Pérez",
+            "usu_direccion": "Calle Séptima 505",
+            "usu_telefono": "963852741",
+            "usu_correo": "miguel.ortiz@example.com"
+        }
+    },
+    {
+        "model": "web.usuario",
+        "pk": "258741369",
+        "fields": {
+            "usu_nombre1": "Laura",
+            "usu_nombre2": "Beatriz",
+            "usu_apellido1": "Martínez",
+            "usu_apellido2": "Hidalgo",
+            "usu_direccion": "Calle Octava 606",
+            "usu_telefono": "258369147",
+            "usu_correo": "laura.martinez@example.com"
+        }
+    }
+]

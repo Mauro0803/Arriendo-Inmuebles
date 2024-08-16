@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Comuna(models.Model):
     com_id = models.AutoField(primary_key=True)
     com_comuna = models.CharField(unique=True, max_length=20)
@@ -8,6 +7,9 @@ class Comuna(models.Model):
     class Meta:
         managed = False
         db_table = 'comuna'
+
+    def __str__(self):
+        return self.com_comuna
 
 
 class Tipo_Inmueble(models.Model):
@@ -21,23 +23,26 @@ class Tipo_Inmueble(models.Model):
 
 class Region(models.Model):
     reg_id = models.AutoField(primary_key=True)
-    reg_region = models.CharField(unique=True, max_length=20)
+    reg_region = models.CharField(unique=True, max_length=50)
 
     class Meta:
         managed = False
         db_table = 'region'
+
+    def __str__(self):
+        return self.reg_region
 
 
 class Inmueble(models.Model):
     inm_id = models.AutoField(primary_key=True)
     inm_nombre = models.CharField(max_length=50)
     inm_descripcion = models.TextField(blank=True, null=True)
-    inm_m2_construidos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
-    inm_m2_totales = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    inm_m2_construidos = models.DecimalField(max_digits=9, decimal_places=2, blank=True, null=True)
+    inm_m2_totales = models.DecimalField(max_digits=9, decimal_places=2, blank=True, null=True)
     inm_estacionamientos = models.IntegerField(blank=True, null=True)
     inm_habitaciones = models.IntegerField(blank=True, null=True)
     inm_banos = models.IntegerField(blank=True, null=True)
-    inm_direccion = models.CharField(max_length=30, blank=True, null=True)
+    inm_direccion = models.CharField(max_length=50, blank=True, null=True)
     inm_precio = models.IntegerField(blank=True, null=True)
     fk_com = models.ForeignKey(Comuna, on_delete=models.DO_NOTHING, blank=True, null=True)
     fk_reg = models.ForeignKey(Region, on_delete=models.DO_NOTHING, blank=True, null=True)
@@ -55,6 +60,9 @@ class Tipo_Usuario(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_usuario'
+
+    def __str__(self):
+        return self.tu_tipo
 
 
 class Usuario(models.Model):

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %}
+<title>Listado Usuarios</title>
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+    <h1>Listado Usuarios</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Numero de Ticket</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuario %}
+            <tr>
+                <td>{{usuario.usu_rut}}</td>
+                <td>{{usuario.usu_nombre1}}</td>
+                <td>{{usuario.usu_nombre2}}</td>
+                <td>{{usuario.usu_apellido1}}</td>
+                <td>{{usuario.usu_apellido2}}</td>
+                <td>{{usuario.usu_direccion}}</td>
+                <td>{{usuario.usu_telefono}}</td>
+                <td>{{usuario.usu_correo}}</td>
+                <td>{{usuario.fk_tu}}</td>
+                <td>{{usuario.fk_inm}}</td>
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% include 'footer.html' %}
+
+
+</body>
+
+</html>

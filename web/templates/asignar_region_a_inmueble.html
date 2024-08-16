@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head.html' %}
+    <title>Asignar Region a Inmueble</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Asignar Region a Inmueble</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear</button>
+    </form>
+</body>
+</html>
