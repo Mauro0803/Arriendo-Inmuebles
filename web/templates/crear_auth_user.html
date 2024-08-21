@@ -2,11 +2,11 @@
 <html>
 <head>
     {% include 'head.html' %}
-    <title>Asignar Comuna a Inmueble</title>
+    <title>Crear Auth User</title>
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h1>Asignar Comuna a Inmueble</h1>
+    <h1>Crear Auth User</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

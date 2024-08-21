@@ -3,11 +3,90 @@
 
 <head>
 {% include 'head.html' %}
-<title>Inicio</title>
+<title>Propiedades</title>
 </head>
 
 <body>
 {% include 'navbar.html' %}
+
+    {% if usuario.fk_tu.tu_id == 1 %}       <!-- Contenido para arrendatarios -->
+    <h1>Bienvenido, {{ user.username }} ({{ usuario.fk_tu.tu_tipo }})</h1>
+    <div class="row mt-4 mb-4">
+        {% for inmueble in inmueble %}
+        <div class="col-6 col-md-3">
+            <a href="{% url 'detalle_inmueble' inmueble.inm_id %}" style="text-decoration: none;" class="card-link">
+                <!-- Vinculo para mostrar pagina con cada inmueble especifico -->
+                <div class="card mb-4" >
+                    <img src="{{ inmueble.inm_url }}" class="card-img-top" alt="..." width="380" height="280">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ inmueble.inm_nombre }}
+                        </h5>
+                        <p class="card-text">
+                            {{ inmueble.inm_descripcion }}
+                            <br>
+                            m2_construidos : {{ inmueble.inm_m2_construidos }}
+                            <br>
+                            m2_totales : {{ inmueble.inm_m2_totales }}
+                            <br>
+                            Estacionamientos : {{ inmueble.inm_estacionamientos }}
+                            <br>
+                            Habitaciones : {{ inmueble.inm_habitaciones }}
+                            <br>
+                            Baños : {{ inmueble.inm_banos }}
+                            <br>
+                            Direccion : {{ inmueble.inm_direccion }}
+                            <br>
+                            Precio : ${{ inmueble.inm_precio }}
+                            <br>
+                            Comuna : {{ inmueble.fk_com }}
+                            <br>
+                            Region: {{ inmueble.fk_reg }}
+                            <br>
+                            Tipo de Inmueble : {{ inmueble.fk_ti }}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% elif usuario.fk_tu.tu_id == 2 %}     <!-- Contenido para arrendador -->
+    <h1>Bienvenido, {{ user.username }} ({{ usuario.fk_tu.tu_tipo }})</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Crear Inmueble</h5>
+                <p class="card-text">Aqui podras crear el inmueble que deseas arrendar</p>
+                <a href="/crear_inmueble" class="btn btn-primary">Ingresar</a>
+              </div>
+            </div>
+          </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Modificar Inmueble</h5>
+              <p class="card-text">Aqui podras modificar tu publicacion</p>
+              <a href="/modificar_inmueble" class="btn btn-primary">Ingresar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Borrar Inmueble</h5>
+              <p class="card-text">Aqui podras borrar tus publicaciones</p>
+              <a href="/borrar_inmueble" class="btn btn-primary">Ingresar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% endif %}
+    
+
 
 {% include 'footer.html' %}
 

@@ -6,12 +6,14 @@
 </head>
 <body>
     {% include 'navbar.html' %}
+
     <h1>Crear Inmueble</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Crear</button>
     </form>
+
     {% include 'footer.html' %}
 </body>
 </html>

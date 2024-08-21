@@ -27,6 +27,7 @@
         </form>
         {# Asume que configura la vista de restablecimiento de contraseña en su URLconf #}
         <p><a href="{% url 'password_reset' %}">¿Olvidó su contraseña?</a></p>
+        <p><a href='/crear_auth_user'>Registrate</a></p>
 
         {% if form.errors %}
         <div class="alert alert-danger mt-3">

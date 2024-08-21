@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+{% include 'head.html'%}
+<title>Detalle del Inmueble: {{ inmueble.inm_nombre }}</title>
+</head>
+
+<body>
+{% include 'navbar.html' %}
+  
+  <div class="card mb-3" width="380" height="280">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ inmueble.inm_url }}" class="img-fluid rounded-start" alt="{{ inmueble.inm_nombre }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ inmueble.inm_nombre }}</h5>
+          <p class="card-text"><small class="text-body-secondary"><b>{{ inmueble.inm_descripcion }}</b></small></p>
+          <p class="card-text"><b>Baños:</b> {{ inmueble.inm_banos|linebreaks }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'footer.html'%}
+</body>
+
+</html>

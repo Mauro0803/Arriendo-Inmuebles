@@ -9,7 +9,32 @@ class Crear_UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['usu_rut', 'usu_nombre1', 'usu_nombre2', 'usu_apellido1', 'usu_apellido2', 'usu_direccion',
-                  'usu_telefono', 'usu_correo']
+                  'usu_telefono', 'usu_correo', 'fk_tu']
+        labels = {
+            'usu_rut': 'RUT',
+            'usu_nombre1': 'Primer Nombre',
+            'usu_nombre2': 'Segundo Nombre',
+            'usu_apellido1': 'Primer Apellido',
+            'usu_apellido2': 'Segundo Apellido',
+            'usu_direccion': 'Dirección',
+            'usu_telefono': 'Teléfono',
+            'usu_correo': 'Correo Electrónico',
+            'fk_tu': 'Tipo de Usuario',
+        }
+    def __init__(self, *args, **kwargs):
+        super(Crear_UsuarioForm, self).__init__(*args, **kwargs)
+    # Filtrar para que no aparezca el Administrador
+        self.fields['fk_tu'].queryset = Tipo_Usuario.objects.exclude(tu_id=3)
+'''Explicación:
+__init__(self, *args, **kwargs): Sobrescribimos el método __init__ del formulario para poder modificar el queryset de fk_tu.
+self.fields['fk_tu'].queryset = TipoUsuario.objects.exclude(tu_id=3): Filtramos las opciones que se mostrarán en el campo fk_tu, excluyendo el tipo de usuario con tu_id=1, que corresponde al "Administrador".
+Este cambio evitará que la opción "Administrador" aparezca en el dropdown cuando el usuario esté creando un nuevo registro.
+'''
+
+class Crear_Auth_UserForm(forms.ModelForm):
+    class Meta:
+        model = Auth_User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']
 
      
 class Crear_TipoUsuarioForm(forms.Form):
@@ -28,9 +53,24 @@ class Crear_InmuebleForm(forms.ModelForm):
     class Meta:
         model = Inmueble
         fields = ['inm_nombre', 'inm_descripcion', 'inm_m2_construidos', 'inm_m2_totales', 'inm_estacionamientos', 'inm_habitaciones',
-                  'inm_banos', 'inm_direccion', 'inm_precio']  
+                  'inm_banos', 'inm_direccion', 'inm_precio', 'inm_url', 'fk_com', 'fk_reg', 'fk_ti']  
+        labels = {
+            'inm_nombre': 'Nombre del Inmueble',
+            'inm_descripcion': 'Descripción',
+            'inm_m2_construidos': 'Metros² Construidos',
+            'inm_m2_totales': 'Metros² Totales',
+            'inm_estacionamientos': 'Estacionamientos',
+            'inm_habitaciones': 'Habitaciones',
+            'inm_banos': 'Baños',
+            'inm_direccion': 'Dirección',
+            'inm_precio': 'Precio',
+            'inm_url': 'Imagen del Inmueble',
+            'fk_com': 'Comuna',
+            'fk_reg': 'Región',
+            'fk_ti': 'Tipo de Inmueble',
+        }
 
-
+        
 class Modificar_UsuarioForm(forms.Form):
     rut = forms.CharField(max_length=9, label="RUT del usuario")
     campo_a_modificar = forms.ChoiceField(
@@ -61,7 +101,11 @@ class Modificar_InmuebleForm(forms.Form):
             ('inm_banos', 'Baños'),
             ('inm_direccion', 'Direccion'),
             ('inm_precio', 'Precio'),
-        ], 
+            ('fk_com', 'Comuna'),
+            ('fk_reg', 'Region'),
+            ('fk_ti', 'Tipo de Inmueble'),
+            ('inm_url', 'Imagen del Inmueble'),
+        ],
         label="Campo a modificar"
     )
     nuevo_valor = forms.CharField(max_length=50, label="Nuevo valor")
@@ -112,3 +156,17 @@ class Listado_UsuarioForm(forms.ModelForm):
         model = Usuario
         fields = ['usu_rut', 'usu_nombre1', 'usu_nombre2', 'usu_apellido1', 'usu_apellido2', 'usu_direccion',
                   'usu_telefono', 'usu_correo', 'fk_tu','fk_inm']
+        
+class Listado_UsuarioForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['usu_rut', 'usu_nombre1', 'usu_nombre2', 'usu_apellido1', 'usu_apellido2', 'usu_direccion',
+                  'usu_telefono', 'usu_correo', 'fk_tu','fk_inm']
+        
+class Listado_InmuebleForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = ['inm_id', 'inm_nombre', 'inm_descripcion', 'inm_m2_construidos', 'inm_m2_totales', 'inm_estacionamientos',
+                  'inm_habitaciones', 'inm_banos', 'inm_direccion', 'inm_precio', 'fk_com', 'fk_reg', 'fk_ti']
+    
+

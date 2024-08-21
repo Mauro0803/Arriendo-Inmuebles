@@ -1,4 +1,6 @@
 from web.models import *
+from django.contrib.auth.hashers import make_password
+
 #kwargs: Es un diccionario que contiene todos los campos del formulario. Al usar **kwargs, la función puede recibir todos
 #        los argumentos de palabra clave y pasarlos directamente al constructor de Usuario.
 def crear_comuna(comuna):
@@ -8,6 +10,16 @@ def crear_comuna(comuna):
 def crear_usuario(**kwargs):
     nuevo_usuario = Usuario(**kwargs)
     nuevo_usuario.save()
+
+def crear_auth_user(**kwargs):
+    password = kwargs.get('password')
+    if password:
+        # Encriptar la contraseña
+        kwargs['password'] = make_password(password)
+    
+    nuevo_usuario = Auth_User(**kwargs)
+    nuevo_usuario.save()
+    return nuevo_usuario
 
 def crear_tipo_usuario(tipo):
     nuevo_tipo_usuario = Tipo_Usuario(tu_tipo = tipo)

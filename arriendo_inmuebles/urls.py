@@ -5,8 +5,11 @@ from web.views import *
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path("", index),
+    path("", index, name='index'),
+    path('detalle_inmueble/<int:id>/', detalle_inmueble, name='detalle_inmueble'),
     path('crear_comuna/', crear_comuna_view, name='crear_comuna'),
+    path('crear_auth_user/', crear_auth_user_view, name='crear_auth_user'),
+    path('crear_usuario/<int:auth_user_id>/', crear_usuario_view, name='crear_usuario'),
     path('crear_usuario/', crear_usuario_view, name='crear_usuario'),
     path('crear_tipo_usuario/', crear_tipo_usuario_view, name='crear_tipo_usuario'),
     path('crear_region/', crear_region_view, name='crear_region'),
@@ -21,5 +24,5 @@ urlpatterns = [
     path('asignar_tipo_a_usuario/', asignar_tipo_a_usuario_view, name='asignar_tipo_a_usuario'),
     path('asignar_inmueble_a_usuario/', asignar_inmueble_a_usuario_view, name='asignar_inmueble_a_usuario'),
     path('listado_usuario/', listado_usuario_view, name='listado_usuario'),
-
+    path('listado_inmueble/', listado_inmueble_view, name='listado_inmueble'),
 ]

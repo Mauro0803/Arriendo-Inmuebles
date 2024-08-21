@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+    border-collapse: collapse; /* Colapsa los bordes para que no se dupliquen */
+}
+th, td {
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 8px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+}
+th {
+    background-color: #f4f4f4; /* Color de fondo de las cabeceras */
+    font-weight: bold; /* Negrita en las cabeceras */
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo alternativo para filas pares */
+}
+tr:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+}

@@ -13,16 +13,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Numero de Ticket</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Estado</th>
+                <th scope="col">RUT</th>
+                <th scope="col">Primer Nombre</th>
+                <th scope="col">Segundo Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Tipo de Usuario</th>
+                <th scope="col">Inmueble</th>
             </tr>
         </thead>
         <tbody>
@@ -37,16 +37,13 @@
                 <td>{{usuario.usu_telefono}}</td>
                 <td>{{usuario.usu_correo}}</td>
                 <td>{{usuario.fk_tu}}</td>
-                <td>{{usuario.fk_inm}}</td>
-
-                
+                <td>{{usuario.fk_inm.inm_id}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     
     {% include 'footer.html' %}
-
 
 </body>
 
