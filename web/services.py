@@ -3,10 +3,6 @@ from django.contrib.auth.hashers import make_password
 
 #kwargs: Es un diccionario que contiene todos los campos del formulario. Al usar **kwargs, la función puede recibir todos
 #        los argumentos de palabra clave y pasarlos directamente al constructor de Usuario.
-def crear_comuna(comuna):
-    nueva_comuna = Comuna(com_comuna = comuna)
-    nueva_comuna.save()
-
 def crear_usuario(**kwargs):
     nuevo_usuario = Usuario(**kwargs)
     nuevo_usuario.save()
@@ -20,18 +16,6 @@ def crear_auth_user(**kwargs):
     nuevo_usuario = Auth_User(**kwargs)
     nuevo_usuario.save()
     return nuevo_usuario
-
-def crear_tipo_usuario(tipo):
-    nuevo_tipo_usuario = Tipo_Usuario(tu_tipo = tipo)
-    nuevo_tipo_usuario.save()
-
-def crear_region(region):
-    nueva_region = Region(reg_region = region)
-    nueva_region.save()
-
-def crear_tipo_inmueble(tipo):
-    nuevo_tipo_inmueble = Tipo_Inmueble(ti_tipo = tipo)
-    nuevo_tipo_inmueble.save()
 
 def crear_inmueble(**kwargs):
     nuevo_inmueble = Inmueble(**kwargs)
@@ -62,39 +46,6 @@ def borrar_inmueble(id):
     borrar = Inmueble.objects.get(inm_id=id)
     borrar.delete()
 
-
-def asignar_comuna_a_inmueble(id_inmueble, id_comuna):
-    inmueble = Inmueble.objects.get(inm_id=id_inmueble)
-    comuna = Comuna.objects.get(com_comuna = id_comuna)
-    inmueble.fk_com = comuna
-    inmueble.save()
-
-
-def asignar_region_a_inmueble(id_inmueble, id_region):
-    inmueble = Inmueble.objects.get(inm_id=id_inmueble)
-    region = Region.objects.get(reg_region = id_region)
-    inmueble.fk_reg = region
-    inmueble.save()   
-
-
-def asignar_tipo_a_usuario(tipo_usuario, rut):
-    asignar_usuario = Usuario.objects.get(usu_rut=rut)
-    tipo_usuario = Tipo_Usuario.objects.get(tu_tipo=tipo_usuario)
-    asignar_usuario.fk_tu = tipo_usuario
-    asignar_usuario.save()
-
-
-def asignar_inmueble_a_usuario(rut, id_inmueble):
-    usuario = Usuario.objects.get(usu_rut = rut)
-    asignar_inmueble = Inmueble.objects.get(inm_id = id_inmueble)
-    usuario.fk_inm = asignar_inmueble
-    usuario.save()
-
-def listar_usuarios():
-    lista = Usuario.objects.all()
-    for usuario in lista:
-        print(f"• {usuario.usu_nombre1} {usuario.usu_apellido1}")
-
 def listar_todo():
     usuarios = Usuario.objects.all()
     tipo_usuarios = Tipo_Usuario.objects.all()
@@ -115,3 +66,55 @@ def listar_todo():
         print(f"•Region: {region.reg_region}")
     for tipo_inmueble in tipo_inmuebles:
         print(f"•TipoInmueble: {tipo_inmueble.ti_tipo}")
+
+
+
+
+# def crear_comuna(comuna):
+#     nueva_comuna = Comuna(com_comuna = comuna)
+#     nueva_comuna.save()
+
+# def crear_tipo_usuario(tipo):
+#     nuevo_tipo_usuario = Tipo_Usuario(tu_tipo = tipo)
+#     nuevo_tipo_usuario.save()
+
+# def crear_region(region):
+#     nueva_region = Region(reg_region = region)
+#     nueva_region.save()
+
+# def crear_tipo_inmueble(tipo):
+#     nuevo_tipo_inmueble = Tipo_Inmueble(ti_tipo = tipo)
+#     nuevo_tipo_inmueble.save()
+
+
+# def asignar_comuna_a_inmueble(id_inmueble, id_comuna):
+#     inmueble = Inmueble.objects.get(inm_id=id_inmueble)
+#     comuna = Comuna.objects.get(com_comuna = id_comuna)
+#     inmueble.fk_com = comuna
+#     inmueble.save()
+
+
+# def asignar_region_a_inmueble(id_inmueble, id_region):
+#     inmueble = Inmueble.objects.get(inm_id=id_inmueble)
+#     region = Region.objects.get(reg_region = id_region)
+#     inmueble.fk_reg = region
+#     inmueble.save()   
+
+
+# def asignar_tipo_a_usuario(tipo_usuario, rut):
+#     asignar_usuario = Usuario.objects.get(usu_rut=rut)
+#     tipo_usuario = Tipo_Usuario.objects.get(tu_tipo=tipo_usuario)
+#     asignar_usuario.fk_tu = tipo_usuario
+#     asignar_usuario.save()
+
+
+# def asignar_inmueble_a_usuario(rut, id_inmueble):
+#     usuario = Usuario.objects.get(usu_rut = rut)
+#     asignar_inmueble = Inmueble.objects.get(inm_id = id_inmueble)
+#     usuario.fk_inm = asignar_inmueble
+#     usuario.save()
+
+# def listar_usuarios():
+#     lista = Usuario.objects.all()
+#     for usuario in lista:
+#         print(f"• {usuario.usu_nombre1} {usuario.usu_apellido1}")

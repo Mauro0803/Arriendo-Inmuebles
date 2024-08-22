@@ -16,9 +16,18 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ inmueble.inm_nombre }}</h5>
-          <p class="card-text"><small class="text-body-secondary"><b>{{ inmueble.inm_descripcion }}</b></small></p>
-          <p class="card-text"><b>Baños:</b> {{ inmueble.inm_banos|linebreaks }}</p>
+          <h3 class="card-title">{{ inmueble.inm_nombre }}</h3>
+          <p class="card-text">{{ inmueble.inm_descripcion }}</p>
+          <p class="card-text"><b>m2_construidos:</b> {{ inmueble.inm_m2_construidos }}</p>
+          <p class="card-text"><b>m2_totales:</b> {{ inmueble.inm_m2_totales }}</p>
+          <p class="card-text"><b>Estacionamientos:</b> {{ inmueble.inm_estacionamientos }}</p>
+          <p class="card-text"><b>Habitaciones:</b> {{ inmueble.inm_habitaciones }}</p>
+          <p class="card-text"><b>Baños:</b> {{ inmueble.inm_banos }}</p>
+          <p class="card-text"><b>Direccion:</b> {{ inmueble.inm_direccion }}</p>
+          <p class="card-text"><b>Precio:</b> ${{ inmueble.inm_precio }}</p>
+          <p class="card-text"><b>Comuna:</b> {{ inmueble.fk_com }}</p>
+          <p class="card-text"><b>Region:</b> {{ inmueble.fk_reg }}</p>
+          <p class="card-text"><b>Tipo de Inmueble:</b> {{ inmueble.fk_ti }}</p>
         </div>
       </div>
     </div>

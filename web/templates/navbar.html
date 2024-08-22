@@ -21,30 +21,30 @@
         <a class="nav-link" href="/borrar_inmueble">Borrar Inmueble</a>
       </li>
       
-      {% elif usuario.fk_tu.tu_id == 1 %} <!-- 2=Arrendatario -->
+      {% elif usuario.fk_tu.tu_id == 1 %} <!-- 1=Arrendatario -->
       <li class="nav-item">
         <a class="nav-link" href="/listado_inmueble">Listado de Inmuebles</a>
       </li>
 
-      {% elif usuario.fk_tu.tu_id == 3 %} <!-- 3=Administrador (Mauricio)-->
+      {% elif usuario.fk_tu.tu_id == 3 %} <!-- 3=Administrador -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
           Menu Admin
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="/crear_comuna/">Crear Comuna</a></li>
+          <!--<li><a class="dropdown-item" href="/crear_comuna/">Crear Comuna</a></li>
           <li><a class="dropdown-item" href="/crear_usuario/">Crear Usuario</a></li>
           <li><a class="dropdown-item" href="/crear_tipo_usuario">Crear Tipo Usuario</a></li>
           <li><a class="dropdown-item" href="/crear_region">Crear Region</a></li>
           <li><a class="dropdown-item" href="/crear_tipo_inmueble">Crear Tipo Inmueble</a></li>
-          <li><a class="dropdown-item" href="/modificar_usuario">Modificar Usuario</a></li>
-          <li><a class="dropdown-item" href="/borrar_usuario">Borrar Usuario</a></li>
           <li><a class="dropdown-item" href="/asignar_comuna_a_inmueble">Asignar Comuna a Inmueble</a></li>
           <li><a class="dropdown-item" href="/asignar_region_a_inmueble">Asignar Region a Inmueble</a></li>
           <li><a class="dropdown-item" href="/asignar_tipo_a_usuario">Asignar Tipo a Usuario</a></li>
           <li><a class="dropdown-item" href="/asignar_inmueble_a_usuario">Asignar Inmueble a Usuario</a></li>
           <li><a class="dropdown-item" href="/listado_usuario">Listado Usuarios</a></li>
+        --><li><a class="dropdown-item" href="/modificar_usuario">Modificar Usuario</a></li>
+          <li><a class="dropdown-item" href="/borrar_usuario">Borrar Usuario</a></li>
           <li><a class="dropdown-item" href="/admin/">Administrador</a></li>
           <li><a class="dropdown-item" href="/crear_auth_user/">Crear Auth User</a></li>
           <li><a class="dropdown-item" href="/crear_inmueble/">Crear Inmueble</a></li>
@@ -58,7 +58,7 @@
 
     <ul class="navbar-nav ms-auto">
       {% if user.is_authenticated %}
-      <li class="nav-item text-light">Nombre de Usuario: {{user.get_username}} ({{ usuario.fk_tu.tu_tipo }}) &emsp;</li>
+      <li class="nav-item text-light">Bienvenido: {{user.get_username}} ({{ usuario.fk_tu.tu_tipo }}) &emsp;</li>
       <form class="form-inline my-2 my-lg-0 ml-2" action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Cerrar Sesión</button>
