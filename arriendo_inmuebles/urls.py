@@ -16,6 +16,7 @@ urlpatterns = [
     path('borrar_usuario/', borrar_usuario_view, name='borrar_usuario'),
     path('borrar_inmueble/', borrar_inmueble_view, name='borrar_inmueble'),
     path('listado_inmueble/', listado_inmueble_view, name='listado_inmueble'),
+    path('perfil_usuario/', perfil_usuario_view, name='perfil_usuario'),
 
     # path('asignar_comuna_a_inmueble/', asignar_comuna_a_inmueble_view, name='asignar_comuna_a_inmueble'),
     # path('asignar_region_a_inmueble/', asignar_region_a_inmueble_view, name='asignar_region_a_inmueble'),

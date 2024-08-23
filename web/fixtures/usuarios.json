@@ -114,19 +114,7 @@
             "usu_direccion": "Calle Séptima 505",
             "usu_telefono": "963852741",
             "usu_correo": "miguel.ortiz@example.com"
-        }
-    },
-    {
-        "model": "web.usuario",
-        "pk": "258741369",
-        "fields": {
-            "usu_nombre1": "Laura",
-            "usu_nombre2": "Beatriz",
-            "usu_apellido1": "Martínez",
-            "usu_apellido2": "Hidalgo",
-            "usu_direccion": "Calle Octava 606",
-            "usu_telefono": "258369147",
-            "usu_correo": "laura.martinez@example.com"
+        
         }
     }
 ]

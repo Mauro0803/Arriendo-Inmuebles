@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %}
+<title>Listado Inmuebles</title>
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+  <div class="container mt-4">
+    <h2>Perfil del Usuario</h2>
+
+      <p><strong>RUT:</strong> {{ usuario.usu_rut }}</p>
+      <p><strong>Nombre:</strong> {{ usuario.usu_nombre1 }} {{ usuario.usu_nombre2 }}</p>
+      <p><strong>Apellido:</strong> {{ usuario.usu_apellido1 }} {{ usuario.usu_apellido2 }}</p>
+      <p><strong>Dirección:</strong> {{ usuario.usu_direccion }}</p>
+      <p><strong>Teléfono:</strong> {{ usuario.usu_telefono }}</p>
+      <p><strong>Correo:</strong> {{ usuario.usu_correo }}</p>
+      <p><strong>Tipo de Usuario:</strong> {{ usuario.fk_tu.tu_tipo }}</p>
+
+  </div>
+
+
+    
+    {% include 'footer.html' %}
+
+
+</body>
+
+</html>

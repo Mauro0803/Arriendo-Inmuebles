@@ -57,8 +57,8 @@ def crear_inmueble_view(request):
 
 @login_required
 def modificar_usuario_view(request):
+    usuario = Usuario.objects.filter(fk_au=request.user.id).select_related('fk_tu').first() 
     if request.method == 'POST':
-        usuario = Usuario.objects.filter(fk_au=request.user.id).select_related('fk_tu').first() 
         form = Modificar_UsuarioForm(request.POST)
         if form.is_valid():
             rut = form.cleaned_data['rut']
@@ -127,7 +127,12 @@ def detalle_inmueble(request, id):
     inmueble = get_object_or_404(Inmueble, pk=id)
     return render(request, 'detalle_inmueble.html', {'usuario': usuario,'inmueble': inmueble})
 
+@login_required
+def perfil_usuario_view(request):
+        # Obtén el usuario registrado basado en el Auth_User
+    usuario = Usuario.objects.get(fk_au=request.user.id)
 
+    return render(request, 'perfil_usuario.html', {'usuario': usuario})
 
 # @login_required
 # def listado_usuario_view(request):

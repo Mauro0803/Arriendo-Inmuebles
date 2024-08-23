@@ -69,7 +69,6 @@ def listar_todo():
 
 
 
-
 # def crear_comuna(comuna):
 #     nueva_comuna = Comuna(com_comuna = comuna)
 #     nueva_comuna.save()
