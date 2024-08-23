@@ -68,7 +68,8 @@ class Inmueble(models.Model):
     fk_com = models.ForeignKey(Comuna, on_delete=models.DO_NOTHING, blank=False, null=False)
     fk_reg = models.ForeignKey(Region, on_delete=models.DO_NOTHING, blank=False, null=False)
     fk_ti = models.ForeignKey(Tipo_Inmueble, on_delete=models.DO_NOTHING, blank=False, null=False)
-
+    fk_usu_usu_rut = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='fk_usu_usu_rut', blank=True, null=True)
+    
     class Meta:
         managed = False
         db_table = 'inmueble'
@@ -96,7 +97,6 @@ class Usuario(models.Model):
     usu_telefono = models.CharField(max_length=15)
     usu_correo = models.CharField(max_length=50)
     fk_tu = models.ForeignKey(Tipo_Usuario, on_delete=models.DO_NOTHING, blank=False, null=False)
-    fk_inm = models.ForeignKey(Inmueble, on_delete=models.DO_NOTHING, blank=True, null=True)
     fk_au = models.ForeignKey(Auth_User, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
