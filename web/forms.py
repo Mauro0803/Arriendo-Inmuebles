@@ -124,3 +124,11 @@ class Listado_InmuebleForm(forms.ModelForm):
         model = Inmueble
         fields = ['inm_id', 'inm_nombre', 'inm_descripcion', 'inm_m2_construidos', 'inm_m2_totales', 'inm_estacionamientos',
                   'inm_habitaciones', 'inm_banos', 'inm_direccion', 'inm_precio', 'fk_com', 'fk_reg', 'fk_ti']
+        
+
+class Filtro_InmuebleForm(forms.Form):
+    comuna = forms.ModelChoiceField(queryset=Comuna.objects.all(), required=False, label='Comuna')
+    region = forms.ModelChoiceField(queryset=Region.objects.all(), required=False, label='Región')
+    tipo_inmueble = forms.ModelChoiceField(queryset=Tipo_Inmueble.objects.all(), required=False, label='Tipo de Inmueble')
+    precio_min = forms.DecimalField(required=False, label='Precio Mínimo', min_value=0)
+    precio_max = forms.DecimalField(required=False, label='Precio Máximo', min_value=0)

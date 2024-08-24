@@ -2,58 +2,79 @@
 <html lang="en">
 
 <head>
-{% include 'head.html' %}
-<title>Listado Inmuebles</title>
+    {% include 'head.html' %}
+    <title>Listado Inmuebles</title>
 </head>
 
 <body>
-{% include 'navbar.html' %}
-
-    <h1>Listado Inmuebles</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id del Inmueble</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">m2 Contruidos</th>
-                <th scope="col">m2 Totales</th>
-                <th scope="col">Estacionamientos</th>
-                <th scope="col">Habitaciones</th>
-                <th scope="col">Baños</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Comuna</th>
-                <th scope="col">Region</th>
-                <th scope="col">Tipo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for inmueble in inmueble %}
-            <tr>
-                <td>{{inmueble.inm_id}}</td>
-                <td>{{inmueble.inm_nombre}}</td>
-                <td>{{inmueble.inm_descripcion}}</td>
-                <td>{{inmueble.inm_m2_construidos}}</td>
-                <td>{{inmueble.inm_m2_totales}}</td>
-                <td>{{inmueble.inm_estacionamientos}}</td>
-                <td>{{inmueble.inm_habitaciones}}</td>
-                <td>{{inmueble.inm_banos}}</td>
-                <td>{{inmueble.inm_direccion}}</td>
-                <td>{{inmueble.inm_precio}}</td>
-                <td>{{inmueble.fk_com}}</td>
-                <td>{{inmueble.fk_reg}}</td>
-                <td>{{inmueble.fk_ti}}</td>
-
-                
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% include 'navbar.html' %}
     
+  
+
+    <form method="GET" action="{% url 'listado_inmueble' %}" class="mt-3">
+        <table class="table table-bordered">
+            <tbody>
+                {% for field in form %}
+                <tr>
+                    <td>
+                        {{ field.label_tag }}
+                    </td>
+                    <td>
+                        {{ field }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary mt-3">Buscar</button>
+    </form>
+    
+
+    {% if inmueble %}
+        <h1>Listado Inmuebles</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id del Inmueble</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">m² Construidos</th>
+                    <th scope="col">m² Totales</th>
+                    <th scope="col">Estacionamientos</th>
+                    <th scope="col">Habitaciones</th>
+                    <th scope="col">Baños</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Comuna</th>
+                    <th scope="col">Región</th>
+                    <th scope="col">Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inm in inmueble %}
+                <tr>
+                    <td>{{ inm.inm_id }}</td>
+                    <td>{{ inm.inm_nombre }}</td>
+                    <td>{{ inm.inm_descripcion }}</td>
+                    <td>{{ inm.inm_m2_construidos }}</td>
+                    <td>{{ inm.inm_m2_totales }}</td>
+                    <td>{{ inm.inm_estacionamientos }}</td>
+                    <td>{{ inm.inm_habitaciones }}</td>
+                    <td>{{ inm.inm_banos }}</td>
+                    <td>{{ inm.inm_direccion }}</td>
+                    <td>{{ inm.inm_precio }}</td>
+                    <td>{{ inm.fk_com.com_comuna }}</td> <!-- Campo relacionado de Comuna -->
+                    <td>{{ inm.fk_reg.reg_region }}</td> <!-- Campo relacionado de Región -->
+                    <td>{{ inm.fk_ti.ti_tipo }}</td> <!-- Campo relacionado de Tipo de Inmueble -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron inmuebles</p>
+    {% endif %}
+
     {% include 'footer.html' %}
-
-
 </body>
 
 </html>

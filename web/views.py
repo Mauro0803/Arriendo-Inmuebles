@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db.models import Q
 from .services import *
 from .forms import *
+
 
 @login_required
 def index(request):
@@ -131,8 +133,29 @@ def borrar_inmueble_view(request):
 @login_required
 def listado_inmueble_view(request):
     usuario = obtener_usuario_por_auth_user(request.user.id)
-    inmueble = obtener_inmuebles()      
-    return render(request, 'listado_inmueble.html', {'usuario': usuario, 'inmueble': inmueble}) 
+    form = Filtro_InmuebleForm(request.GET or None)
+    inmuebles = obtener_inmuebles() 
+
+    if form.is_valid():
+        inmuebles = filtrar_inmuebles(
+            comuna=form.cleaned_data.get('comuna'),
+            region=form.cleaned_data.get('region'),
+            tipo_inmueble=form.cleaned_data.get('tipo_inmueble'),
+            precio_min=form.cleaned_data.get('precio_min'),
+            precio_max=form.cleaned_data.get('precio_max'),
+        )
+
+    return render(request, 'listado_inmueble.html', {
+        'usuario': usuario,
+        'form': form,
+        'inmueble': inmuebles,
+    })
+
+
+
+
+
+
 
 
 def detalle_inmueble(request, id):
@@ -144,3 +167,19 @@ def detalle_inmueble(request, id):
 def perfil_usuario_view(request):
     usuario = obtener_usuario(request)
     return render(request, 'perfil_usuario.html', {'usuario': usuario})
+
+def filtrar_inmuebles(comuna=None, region=None, tipo_inmueble=None, precio_min=None, precio_max=None):
+    query = Q()
+    
+    if comuna:
+        query &= Q(fk_com=comuna)
+    if region:
+        query &= Q(fk_reg=region)
+    if tipo_inmueble:
+        query &= Q(fk_ti=tipo_inmueble)
+    if precio_min is not None:
+        query &= Q(inm_precio__gte=precio_min)
+    if precio_max is not None:
+        query &= Q(inm_precio__lte=precio_max)
+    
+    return Inmueble.objects.filter(query)

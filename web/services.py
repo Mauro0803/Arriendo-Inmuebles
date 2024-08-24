@@ -65,3 +65,12 @@ def obtener_inmueble_por_id(id):
 
 def obtener_inmuebles():
     return Inmueble.objects.all()
+
+def obtener_comunas():
+    return Comuna.objects.all()
+
+def obtener_regiones():
+    return Region.objects.all()
+
+def obtener_tipo_inmuebles():
+    return Tipo_Inmueble.objects.all()

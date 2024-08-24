@@ -10,7 +10,20 @@
     <h1>Crear Inmueble</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <table class="table table-bordered">
+            <tbody>
+                {% for field in form %}
+                <tr>
+                    <td>
+                        {{ field.label_tag }}
+                    </td>
+                    <td>
+                        {{ field }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         <button type="submit">Crear</button>
     </form>
 
